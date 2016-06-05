@@ -366,27 +366,13 @@ class HTTP {
 				if (!$contentDisposition) $contentDisposition = $body->getHeader('Content-Disposition');
 			}
 
-			if(
-				$body &&
-				Director::is_https() &&
-				isset($_SERVER['HTTP_USER_AGENT']) &&
-				strstr($_SERVER['HTTP_USER_AGENT'], 'MSIE')==true &&
-				strstr($contentDisposition, 'attachment;')==true
-			) {
-				// IE6-IE8 have problems saving files when https and no-cache are used
-				// (http://support.microsoft.com/kb/323308)
-				// Note: this is also fixable by ticking "Do not save encrypted pages to disk" in advanced options.
-				$responseHeaders["Cache-Control"] = "max-age=3, must-revalidate, no-transform";
-				
-				// Set empty pragma to avoid PHP's session_cache_limiter adding conflicting caching information,
-				// defaulting to "nocache" on most PHP configurations (see http://php.net/session_cache_limiter).
-				// Since it's a deprecated HTTP 1.0 option, all modern HTTP clients and proxies should
-				// prefer the caching information indicated through the "Cache-Control" header.
-				$responseHeaders["Pragma"] = "";
-			} else {
-				$responseHeaders["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate, no-transform";
-			}
+			$responseHeaders["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate, no-transform";
+
 		}
+
+		// add expires headers to every request so we can override apache/nginx/whatever is inbetween
+		$expires = time() + $cacheAge;
+		$responseHeaders["Expires"] = self::gmt_date($expires);
 
 		if(self::$modification_date && $cacheAge > 0) {
 			$responseHeaders["Last-Modified"] = self::gmt_date(self::$modification_date);
@@ -423,9 +409,6 @@ class HTTP {
 					}
 				}
 			}
-
-			$expires = time() + $cacheAge;
-			$responseHeaders["Expires"] = self::gmt_date($expires);
 		}
 
 		if(self::$etag) {
