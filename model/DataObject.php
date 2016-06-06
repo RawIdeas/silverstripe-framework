@@ -295,14 +295,14 @@ class DataObject extends ViewableData implements DataObjectInterface, i18nEntity
 
 	/**
 	 * Get all database columns explicitly defined on a class in {@link DataObject::$db}
-	 * and {@link DataObject::$has_one}. Resolves instances of {@link CompositeDBField}
+	 * and {@link DataObject::$has_one}. Resolves instances of {@link DBComposite}
 	 * into the actual database fields, rather than the name of the field which
 	 * might not equate a database column.
 	 *
 	 * Does not include "base fields" like "ID", "ClassName", "Created", "LastEdited",
 	 * see {@link database_fields()}.
 	 *
-	 * @uses CompositeDBField->compositeDatabaseFields()
+	 * @uses DBComposite->compositeDatabaseFields()
 	 *
 	 * @param string $class
 	 * @return array Map of fieldname to specification, similiar to {@link DataObject::$db}.
@@ -413,8 +413,8 @@ class DataObject extends ViewableData implements DataObjectInterface, i18nEntity
 			$bPos = strpos($fieldClass, '(');
 			if($bPos !== FALSE) $fieldClass = substr($fieldClass, 0, $bPos);
 
-			// Test to see if it implements CompositeDBField
-			if(ClassInfo::classImplements($fieldClass, 'CompositeDBField')) {
+			// Test to see if it implements DBComposite
+			if(ClassInfo::classImplements($fieldClass, 'DBComposite')) {
 				$compositeFields[$fieldName] = $fieldClass;
 			}
 		}
@@ -1369,7 +1369,7 @@ class DataObject extends ViewableData implements DataObjectInterface, i18nEntity
 	 * @throws ValidationException Exception that can be caught and handled by the calling function
 	 */
 	public function write($showDebug = false, $forceInsert = false, $forceWrite = false, $writeComponents = false) {
-		$now = SS_Datetime::now()->Rfc2822();
+		$now = DBDatetime::now()->Rfc2822();
 
 		// Execute pre-write tasks
 		$this->preWrite();
@@ -2946,7 +2946,7 @@ class DataObject extends ViewableData implements DataObjectInterface, i18nEntity
 	 * @return DBField The field as a DBField object
 	 */
 	public function dbObject($fieldName) {
-		// If we have a CompositeDBField object in $this->record, then return that
+		// If we have a DBComposite object in $this->record, then return that
 		if(isset($this->record[$fieldName]) && is_object($this->record[$fieldName])) {
 			return $this->record[$fieldName];
 

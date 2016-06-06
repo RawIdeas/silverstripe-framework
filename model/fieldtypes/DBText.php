@@ -16,7 +16,7 @@
  * @package framework
  * @subpackage model
  */
-class Text extends StringField {
+class DBText extends DBString {
 
 	private static $casting = array(
 		"AbsoluteLinks" => "Text",

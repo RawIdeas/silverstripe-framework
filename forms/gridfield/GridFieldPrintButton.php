@@ -213,7 +213,7 @@ class GridFieldPrintButton implements GridField_HTMLProvider, GridField_ActionPr
 			"Title" => $this->getTitle($gridField),
 			"Header" => $header,
 			"ItemRows" => $itemRows,
-			"Datetime" => SS_Datetime::now(),
+			"Datetime" => DBDatetime::now(),
 			"Member" => Member::currentUser(),
 		));
 

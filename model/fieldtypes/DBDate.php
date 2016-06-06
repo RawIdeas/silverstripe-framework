@@ -18,7 +18,7 @@
  * @package framework
  * @subpackage model
  */
-class Date extends DBField {
+class DBDate extends DBField {
 
 	public function setValue($value, $record = null) {
 		if($value === false || $value === null || (is_string($value) && !strlen($value))) {
@@ -226,7 +226,7 @@ class Date extends DBField {
 	 */
 	public function Ago($includeSeconds = true, $significance = 2) {
 		if($this->value) {
-			$time = SS_Datetime::now()->Format('U');
+			$time = DBDatetime::now()->Format('U');
 			if(strtotime($this->value) == $time || $time > strtotime($this->value)) {
 				return _t(
 					'Date.TIMEDIFFAGO',
@@ -253,7 +253,7 @@ class Date extends DBField {
 	public function TimeDiff($includeSeconds = true, $significance = 2) {
 		if(!$this->value) return false;
 
-		$time = SS_Datetime::now()->Format('U');
+		$time = DBDatetime::now()->Format('U');
 		$ago = abs($time - strtotime($this->value));
 		if($ago < 60 && !$includeSeconds) {
 			return _t('Date.LessThanMinuteAgo', 'less than a minute');
@@ -282,7 +282,7 @@ class Date extends DBField {
 	public function TimeDiffIn($format) {
 		if(!$this->value) return false;
 
-		$time = SS_Datetime::now()->Format('U');
+		$time = DBDatetime::now()->Format('U');
 		$ago = abs($time - strtotime($this->value));
 			
 		switch($format) {
@@ -323,7 +323,7 @@ class Date extends DBField {
 	 * @return boolean
 	 */
 	public function InPast() {
-		return strtotime($this->value) < SS_Datetime::now()->Format('U');
+		return strtotime($this->value) < DBDatetime::now()->Format('U');
 	}
 
 	/**
@@ -331,7 +331,7 @@ class Date extends DBField {
 	 * @return boolean
 	 */
 	public function InFuture() {
-		return strtotime($this->value) > SS_Datetime::now()->Format('U');
+		return strtotime($this->value) > DBDatetime::now()->Format('U');
 	}
 
 	/**
@@ -339,7 +339,7 @@ class Date extends DBField {
 	 * @return boolean
 	 */
 	public function IsToday() {
-		return (date('Y-m-d', strtotime($this->value)) == SS_Datetime::now()->Format('Y-m-d'));
+		return (date('Y-m-d', strtotime($this->value)) == DBDatetime::now()->Format('Y-m-d'));
 	}
 
 	/**

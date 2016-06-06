@@ -7,9 +7,9 @@
  * PHP's built-in date() and strtotime() function according to your system locale.
  *
  * For all computations involving the current date and time,
- * please use {@link SS_Datetime::now()} instead of PHP's built-in date() and time()
+ * please use {@link DBDatetime::now()} instead of PHP's built-in date() and time()
  * methods. This ensures that all time-based computations are testable with mock dates
- * through {@link SS_Datetime::set_mock_now()}.
+ * through {@link DBDatetime::set_mock_now()}.
  *
  * Example definition via {@link DataObject::$db}:
  * <code>
@@ -23,7 +23,7 @@
  * @package framework
  * @subpackage model
  */
-class SS_Datetime extends Date implements TemplateGlobalProvider {
+class DBDatetime extends DBDate implements TemplateGlobalProvider {
 
 	public function setValue($value, $record = null) {
 		if($value === false || $value === null || (is_string($value) && !strlen($value))) {
@@ -184,7 +184,7 @@ class SS_Datetime extends Date implements TemplateGlobalProvider {
 		} elseif(is_string($datetime)) {
 			self::$mock_now = DBField::create_field('SS_Datetime', $datetime);
 		} else {
-			throw new Exception('SS_Datetime::set_mock_now(): Wrong format: ' . $datetime);
+			throw new Exception('DBDatetime::set_mock_now(): Wrong format: ' . $datetime);
 		}
 	}
 

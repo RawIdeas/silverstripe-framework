@@ -10,7 +10,7 @@
  * @package framework
  * @subpackage model
  */
-class Year extends DBField {
+class DBYear extends DBField {
 
 	public function requireField() {
 		$parts=Array('datatype'=>'year', 'precision'=>4, 'arrayValue'=>$this->arrayValue);

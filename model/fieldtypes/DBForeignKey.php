@@ -12,7 +12,7 @@
  * @package framework
  * @subpackage model
  */
-class ForeignKey extends DBInt {
+class DBForeignKey extends DBInt {
 
 	/**
 	 * @var DataObject

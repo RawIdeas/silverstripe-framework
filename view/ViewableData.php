@@ -64,7 +64,7 @@ class ViewableData extends Object implements IteratorAggregate {
 	
 	/**
 	 * Converts a field spec into an object creator. For example: "Int" becomes "new Int($fieldName);" and "Varchar(50)"
-	 * becomes "new Varchar($fieldName, 50);".
+	 * becomes "new DBVarchar($fieldName, 50);".
 	 *
 	 * @param string $fieldSchema The field spec
 	 * @return string

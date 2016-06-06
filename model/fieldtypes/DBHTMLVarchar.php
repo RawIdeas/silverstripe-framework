@@ -6,7 +6,7 @@
  * @package framework
  * @subpackage model
  */
-class HTMLVarchar extends Varchar {
+class DBHTMLVarchar extends DBVarchar {
 
 	private static $escape_type = 'xml';
 

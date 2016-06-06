@@ -1,0 +1,51 @@
+Injector:
+   Boolean:
+     class: DBBoolean
+   Currency:
+     class: DBCurrency
+   DBClassName:
+     class: DBClassName
+   Date:
+     class: DBDate
+   Datetime:
+     class: DBDatetime
+   SS_Datetime:
+     class: DBDatetime
+   Decimal:
+     class: DBDecimal
+   Double:
+     class: DBDouble
+   Enum:
+     class: DBEnum
+   Float:
+     class: DBFloat
+   ForeignKey:
+     class: DBForeignKey
+   HTMLText:
+     class: DBHTMLText
+   HTMLVarchar:
+     class: DBHTMLVarchar
+   Int:
+     class: DBInt
+   Locale:
+     class: DBLocale
+   DBLocale:
+     class: DBLocale
+   Money:
+     class: DBMoney
+   MultiEnum:
+     class: DBMultiEnum
+   Percentage:
+     class: DBPercentage
+   PolymorphicForeignKey:
+     class: DBPolymorphicForeignKey
+   PrimaryKey:
+     class: DBPrimaryKey
+   Text:
+     class: DBText
+   Time:
+     class: DBTime
+   Varchar:
+     class: DBVarchar
+   Year:
+     class: DBYear

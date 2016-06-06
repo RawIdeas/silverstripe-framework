@@ -10,7 +10,7 @@
  * @package framework
  * @subpackage model
  */
-class HTMLText extends Text {
+class DBHTMLText extends DBText {
 	private static $escape_type = 'xml';
 
 	private static $casting = array(

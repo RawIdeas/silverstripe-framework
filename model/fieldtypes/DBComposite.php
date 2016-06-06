@@ -96,7 +96,7 @@
  * @package framework
  * @subpackage model
  */
-interface CompositeDBField {
+interface DBComposite {
 
 	/**
 	 * Similiar to {@link DataObject::$db},

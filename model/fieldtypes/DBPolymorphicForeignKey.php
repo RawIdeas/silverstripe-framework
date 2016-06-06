@@ -6,7 +6,7 @@
  * @package framework
  * @subpackage model
  */
-class PolymorphicForeignKey extends ForeignKey implements CompositeDBField {
+class DBPolymorphicForeignKey extends DBForeignKey implements DBComposite {
 
 	/**
 	 * @var boolean $isChanged

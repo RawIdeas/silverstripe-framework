@@ -88,7 +88,7 @@ class ManyManyList extends RelationList {
 		foreach($this->extraFields as $field => $spec) {
 			$obj = Object::create_from_string($spec);
 
-			if($obj instanceof CompositeDBField) {
+			if($obj instanceof DBComposite) {
 				$this->_compositeExtraFields[$field] = array();
 
 				// append the composite field names to the select

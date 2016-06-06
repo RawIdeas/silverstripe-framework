@@ -14,7 +14,7 @@
  * @package framework
  * @subpackage model
  */
-class Time extends DBField {
+class DBTime extends DBField {
 
 	public function setValue($value, $record = null) {
 		if($value) {

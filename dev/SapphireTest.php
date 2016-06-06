@@ -511,7 +511,7 @@ class SapphireTest extends PHPUnit_Framework_TestCase {
 		$this->originalIsRunningTest = null;
 
 		// Reset mocked datetime
-		SS_Datetime::clear_mock_now();
+		DBDatetime::clear_mock_now();
 
 		// Stop the redirection that might have been requested in the test.
 		// Note: Ideally a clean Controller should be created for each test.
