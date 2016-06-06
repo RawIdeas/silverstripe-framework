@@ -12,10 +12,10 @@ function getTempFolder($base = null) {
 	$parent = getTempParentFolder($base);
 
 	// The actual temp folder is a subfolder of getTempParentFolder(), named by username
-	$subfolder = $parent . DIRECTORY_SEPARATOR . getTempFolderUsername();
+	$subfolder = $parent . DIRECTORY_SEPARATOR . PHP_MAJOR_VERSION . PHP_MINOR_VERSION . DIRECTORY_SEPARATOR . etTempFolderUsername();
 
 	if(!@file_exists($subfolder)) {
-		mkdir($subfolder);
+		mkdir($subfolder, 0777, true);
 	}
 
 	return $subfolder;
