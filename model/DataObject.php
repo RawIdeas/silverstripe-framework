@@ -2952,7 +2952,7 @@ class DataObject extends ViewableData implements DataObjectInterface, i18nEntity
 
 		// Special case for ID field
 		} else if($fieldName == 'ID') {
-			return new PrimaryKey($fieldName, $this);
+			return new DBPrimaryKey($fieldName, $this);
 
 		// Special case for ClassName
 		} else if($fieldName == 'ClassName') {
