@@ -370,7 +370,8 @@ class HTTP {
 			$cacheControlHeaders['no-store'] = "true";
 		}
 
-		$expires = time() + $cacheAge;
+		// add expires headers to every request so we can override apache/nginx/whatever is inbetween
+		$expires = ($cacheAge == 0) ? 0 : time() + $cacheAge;
 		$responseHeaders["Expires"] = self::gmt_date($expires);
 
 		foreach($cacheControlHeaders as $header => $value) {
