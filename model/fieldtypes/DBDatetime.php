@@ -7,14 +7,14 @@
  * PHP's built-in date() and strtotime() function according to your system locale.
  *
  * For all computations involving the current date and time,
- * please use {@link SS_Datetime::now()} instead of PHP's built-in date() and time()
+ * please use {@link DBDatetime::now()} instead of PHP's built-in date() and time()
  * methods. This ensures that all time-based computations are testable with mock dates
- * through {@link SS_Datetime::set_mock_now()}.
+ * through {@link DBDatetime::set_mock_now()}.
  *
  * Example definition via {@link DataObject::$db}:
  * <code>
  * static $db = array(
- *  "Expires" => "SS_Datetime",
+ *  "Expires" => "DBDatetime",
  * );
  * </code>
  *
@@ -23,7 +23,7 @@
  * @package framework
  * @subpackage model
  */
-class SS_Datetime extends Date implements TemplateGlobalProvider {
+class DBDatetime extends Date implements TemplateGlobalProvider {
 
 	/**
 	 * @config
@@ -127,7 +127,7 @@ class SS_Datetime extends Date implements TemplateGlobalProvider {
 
 	public function requireField() {
 		$parts=Array('datatype'=>'datetime', 'arrayValue'=>$this->arrayValue);
-		$values=Array('type'=>'SS_Datetime', 'parts'=>$parts);
+		$values=Array('type'=>'DBDatetime', 'parts'=>$parts);
 		DB::require_field($this->tableName, $this->name, $values);
 	}
 
@@ -170,13 +170,13 @@ class SS_Datetime extends Date implements TemplateGlobalProvider {
 	 * Returns either the current system date as determined
 	 * by date(), or a mocked date through {@link set_mock_now()}.
 	 *
-	 * @return SS_Datetime
+	 * @return DBDatetime
 	 */
 	public static function now() {
 		if(self::$mock_now) {
 			return self::$mock_now;
 		} else {
-			return DBField::create_field('SS_Datetime', date('Y-m-d H:i:s'));
+			return DBField::create_field('DBDatetime', date('Y-m-d H:i:s'));
 		}
 	}
 
@@ -185,15 +185,15 @@ class SS_Datetime extends Date implements TemplateGlobalProvider {
 	 * Use {@link clear_mock_now()} to revert to the current system date.
 	 * Caution: This sets a fixed date that doesn't increment with time.
 	 *
-	 * @param SS_Datetime|string $datetime Either in object format, or as a SS_Datetime compatible string.
+	 * @param DBDatetime|string $datetime Either in object format, or as a DBDatetime compatible string.
 	 */
 	public static function set_mock_now($datetime) {
-		if($datetime instanceof SS_Datetime) {
+		if($datetime instanceof DBDatetime) {
 			self::$mock_now = $datetime;
 		} elseif(is_string($datetime)) {
-			self::$mock_now = DBField::create_field('SS_Datetime', $datetime);
+			self::$mock_now = DBField::create_field('DBDatetime', $datetime);
 		} else {
-			throw new Exception('SS_Datetime::set_mock_now(): Wrong format: ' . $datetime);
+			throw new Exception('DBDatetime::set_mock_now(): Wrong format: ' . $datetime);
 		}
 	}
 
@@ -207,7 +207,7 @@ class SS_Datetime extends Date implements TemplateGlobalProvider {
 
 	public static function get_template_global_variables() {
 		return array(
-			'Now' => array('method' => 'now', 'casting' => 'SS_Datetime'),
+			'Now' => array('method' => 'now', 'casting' => 'DBDatetime'),
 		);
 	}
 }

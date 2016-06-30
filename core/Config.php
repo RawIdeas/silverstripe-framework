@@ -720,6 +720,13 @@ class Config_LRU {
 		$this->indexing = array();
 	}
 
+	/**
+	 * Return the numbers of items in the index
+	 */
+	public function getIndexCount() {
+		return count($this->indexing);
+	}
+
 	public function __clone() {
 		if (version_compare(PHP_VERSION, '5.3.7', '<')) {
 			// SplFixedArray causes seg faults before PHP 5.3.7

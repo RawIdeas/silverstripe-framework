@@ -5,7 +5,7 @@
  * @package framework
  * @subpackage model
  */
-abstract class StringField extends DBField {
+abstract class DBString extends DBField {
 
 	/**
 	 * @var boolean

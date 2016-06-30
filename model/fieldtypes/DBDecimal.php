@@ -5,7 +5,7 @@
  * @package framework
  * @subpackage model
  */
-class Decimal extends DBField {
+class DBDecimal extends DBField {
 
 	protected $wholeSize, $decimalSize, $defaultValue;
 

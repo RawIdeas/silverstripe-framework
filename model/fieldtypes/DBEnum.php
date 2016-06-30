@@ -7,7 +7,7 @@
  * @package framework
  * @subpackage model
  */
-class Enum extends StringField {
+class DBEnum extends DBString {
 
 	protected $enum, $default;
 

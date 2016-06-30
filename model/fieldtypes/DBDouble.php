@@ -4,7 +4,7 @@
  * @package framework
  * @subpackage model
  */
-class Double extends Float {
+class DBDouble extends DBFloat {
 
 	public function requireField() {
 		// HACK: MSSQL does not support double so we're using float instead

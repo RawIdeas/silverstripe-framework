@@ -22,7 +22,7 @@ require_once 'Zend/Currency.php';
  * @package framework
  * @subpackage model
  */
-class Money extends DBField implements CompositeDBField {
+class DBMoney extends DBField implements DBComposite {
 
 	/**
 	 * @var string $getCurrency()

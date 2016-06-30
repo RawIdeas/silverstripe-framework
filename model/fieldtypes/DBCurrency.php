@@ -15,7 +15,7 @@
  * @package framework
  * @subpackage model
  */
-class Currency extends Decimal {
+class DBCurrency extends DBDecimal {
 
 	/**
 	 * @config
@@ -66,7 +66,7 @@ class Currency extends Decimal {
 
 	public static function setCurrencySymbol($value) {
 		Deprecation::notice('4.0', 'Use the "Currency.currency_symbol" config setting instead');
-		Currency::config()->currency_symbol = $value;
+		DBCurrency::config()->currency_symbol = $value;
 	}
 }
 

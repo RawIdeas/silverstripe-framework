@@ -9,7 +9,7 @@
  * @package framework
  * @subpackage model
  */
-class Varchar extends StringField {
+class DBVarchar extends DBString {
 
 	private static $casting = array(
 		"Initial" => "Text",

@@ -386,7 +386,7 @@ class Member extends DataObject implements TemplateGlobalProvider {
 	 * Returns true if this user is locked out
 	 */
 	public function isLockedOut() {
-		return $this->LockedOutUntil && SS_Datetime::now()->Format('U') < strtotime($this->LockedOutUntil);
+		return $this->LockedOutUntil && DBDatetime::now()->Format('U') < strtotime($this->LockedOutUntil);
 	}
 
 	/**
@@ -541,7 +541,7 @@ class Member extends DataObject implements TemplateGlobalProvider {
 		$generator = new RandomGenerator();
 		$this->TempIDHash = $generator->randomToken('sha1');
 		$this->TempIDExpired = self::config()->temp_id_lifetime
-			? date('Y-m-d H:i:s', strtotime(SS_Datetime::now()->getValue()) + self::config()->temp_id_lifetime)
+			? date('Y-m-d H:i:s', strtotime(DBDatetime::now()->getValue()) + self::config()->temp_id_lifetime)
 			: null;
 		$this->write();
 	}
@@ -732,7 +732,7 @@ class Member extends DataObject implements TemplateGlobalProvider {
 
 		// Exclude expired
 		if(static::config()->temp_id_lifetime) {
-			$members = $members->filter('TempIDExpired:GreaterThan', SS_Datetime::now()->getValue());
+			$members = $members->filter('TempIDExpired:GreaterThan', DBDatetime::now()->getValue());
 		}
 
 		return $members->first();
@@ -1642,7 +1642,7 @@ class Member extends DataObject implements TemplateGlobalProvider {
 
 			if($this->FailedLoginCount >= self::config()->lock_out_after_incorrect_logins) {
 				$lockoutMins = self::config()->lock_out_delay_mins;
-				$this->LockedOutUntil = date('Y-m-d H:i:s', SS_Datetime::now()->Format('U') + $lockoutMins*60);
+				$this->LockedOutUntil = date('Y-m-d H:i:s', DBDatetime::now()->Format('U') + $lockoutMins*60);
 				$this->FailedLoginCount = 0;
 			}
 		}

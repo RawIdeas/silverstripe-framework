@@ -13,7 +13,7 @@
  * @package framework
  * @subpackage model
  */
-class Percentage extends Decimal {
+class DBPercentage extends DBDecimal {
 
 	/**
 	 * Create a new Decimal field.

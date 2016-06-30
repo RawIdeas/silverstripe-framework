@@ -295,7 +295,7 @@ class DataObject extends ViewableData implements DataObjectInterface, i18nEntity
 
 	/**
 	 * Get all database columns explicitly defined on a class in {@link DataObject::$db}
-	 * and {@link DataObject::$has_one}. Resolves instances of {@link CompositeDBField}
+	 * and {@link DataObject::$has_one}. Resolves instances of {@link DBComposite}
 	 * into the actual database fields, rather than the name of the field which
 	 * might not equate a database column.
 	 *
@@ -2984,7 +2984,7 @@ class DataObject extends ViewableData implements DataObjectInterface, i18nEntity
 
 		// Special case for ID field
 		} else if($fieldName == 'ID') {
-			return new PrimaryKey($fieldName, $this);
+			return new DBPrimaryKey($fieldName, $this);
 
 		// Special case for ClassName
 		} else if($fieldName == 'ClassName') {

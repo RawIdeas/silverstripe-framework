@@ -1738,7 +1738,7 @@ class LeftAndMain extends Controller implements PermissionProvider {
 	 * @return String
 	 */
 	public function Locale() {
-		return DBField::create_field('DBLocale', i18n::get_locale());
+		return DBField::create_field('Locale', i18n::get_locale());
 	}
 
 	public function providePermissions() {

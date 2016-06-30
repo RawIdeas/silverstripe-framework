@@ -10,7 +10,7 @@
  * @package framework
  * @subpackage model
  */
-class MultiEnum extends Enum {
+class DBMultiEnum extends DBEnum {
 	public function __construct($name, $enum = NULL, $default = NULL) {
 		// MultiEnum needs to take care of its own defaults
 		parent::__construct($name, $enum, null);

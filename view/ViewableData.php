@@ -64,7 +64,7 @@ class ViewableData extends Object implements IteratorAggregate {
 
 	/**
 	 * Converts a field spec into an object creator. For example: "Int" becomes "new Int($fieldName);" and "Varchar(50)"
-	 * becomes "new Varchar($fieldName, 50);".
+	 * becomes "new DBVarchar($fieldName, 50);".
 	 *
 	 * @param string $fieldSchema The field spec
 	 * @return string
@@ -326,7 +326,7 @@ class ViewableData extends Object implements IteratorAggregate {
 	public function escapeTypeForField($field) {
 		$class = $this->castingClass($field) ?: $this->config()->default_cast;
 
-		return Config::inst()->get($class, 'escape_type', Config::FIRST_SET);
+		return Injector::inst()->get($class, true)->config()->escape_type;
 	}
 
 	/**

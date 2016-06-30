@@ -7,7 +7,7 @@
  * @package framework
  * @subpackage i18n
  */
-class DBLocale extends Varchar {
+class DBLocale extends DBVarchar {
 
 	public function __construct($name = null, $size = 16) {
 		parent::__construct($name, $size);

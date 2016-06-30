@@ -5,7 +5,7 @@
  * @package framework
  * @subpackage model
  */
-class Boolean extends DBField {
+class DBBoolean extends DBField {
 
 	public function __construct($name = null, $defaultVal = 0) {
 		$this->defaultVal = ($defaultVal) ? 1 : 0;
