@@ -23,7 +23,7 @@
  * @package framework
  * @subpackage model
  */
-class DBDatetime extends Date implements TemplateGlobalProvider {
+class DBDatetime extends DBDate implements TemplateGlobalProvider {
 
 	/**
 	 * @config
