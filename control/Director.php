@@ -530,7 +530,7 @@ class Director implements TemplateGlobalProvider {
 			$return = ($protocol == 'https');
 		} else if($headerOverride) {
 			$return = true;
-		} else if((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off')) {
+		} else if((!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) != 'off')) {
 			$return = true;
 		} else if(isset($_SERVER['SSL'])) {
 			$return = true;
