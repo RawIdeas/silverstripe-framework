@@ -240,7 +240,7 @@ class DataObject extends ViewableData implements DataObjectInterface, i18nEntity
 	 */
 	public static function clear_classname_spec_cache() {
 		self::$classname_spec_cache = array();
-		PolymorphicForeignKey::clear_classname_spec_cache();
+		DBPolymorphicForeignKey::clear_classname_spec_cache();
 	}
 
 	/**
