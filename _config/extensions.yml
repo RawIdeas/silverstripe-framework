@@ -1,7 +1,0 @@
----
-Name: frameworkextensions
----
-
-Injector:
-  Varchar:
-    class: DBVarchar
