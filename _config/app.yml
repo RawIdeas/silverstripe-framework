@@ -1,3 +1,7 @@
+---
+Name: frameworkapp
+---
+
 Injector:
   Varchar:
     class: DBVarchar
